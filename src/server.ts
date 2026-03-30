@@ -1,7 +1,4 @@
-declare function require(moduleName: string): any;
-declare const process: { env: { PORT?: string } };
-
-const express = require("express");
+import express from "express";
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
