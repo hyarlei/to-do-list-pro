@@ -11,7 +11,7 @@ const createCategorySchema = z.object({
 
 const createTaskSchema = z.object({
   title: z.string().min(1, 'Título é obrigatório').max(200),
-  description: z.string().max(500).optional(),
+  description: z.string().max(500).nullable().optional(),
   completed: z.boolean().optional().default(false),
   categoryId: z.number().int().positive('ID da categoria deve ser positivo'),
 });
@@ -23,14 +23,29 @@ const updateTaskSchema = z.object({
   categoryId: z.number().int().positive().optional(),
 });
 
+const bulkCreateTasksSchema = z.array(createTaskSchema);
+
 const validateBody = (schema: z.ZodSchema) => (req: Request, res: Response, next: Function) => {
   try {
     const validated = schema.parse(req.body);
     req.body = validated;
     next();
   } catch (error: any) {
-    const errors = error.errors?.map((e: any) => ({ field: e.path.join('.'), message: e.message })) || [];
-    return res.status(400).json({ error: 'Validação falhou', details: errors });
+    const errors: any[] = [];
+    if (error instanceof z.ZodError) {
+      error.issues.forEach((e: any) => {
+        errors.push({ 
+          field: e.path.join('.') || 'root', 
+          message: e.message,
+          code: e.code
+        });
+      });
+    }
+    return res.status(400).json({ 
+      error: 'Validação falhou', 
+      details: errors,
+      body: req.body 
+    });
   }
 };
 
@@ -51,6 +66,28 @@ routes.post(
 );
 
 routes.get('/categories', (req: Request, res: Response) => CategoryController.index(req, res));
+
+routes.post(
+  '/tasks/bulk',
+  validateBody(bulkCreateTasksSchema),
+  async (req: Request, res: Response) => {
+    try {
+      const prisma = require('../../lib/prisma').default;
+      const tasks = await Promise.all(
+        req.body.map((taskData: any) => 
+          prisma.task.create({ 
+            data: taskData,
+            include: { category: true }
+          })
+        )
+      );
+      return res.status(201).json(tasks);
+    } catch (error: any) {
+      console.error('Erro ao criar tarefas:', error);
+      return res.status(400).json({ error: 'Erro ao criar tarefas em lote', details: error.message });
+    }
+  }
+);
 
 routes.post(
   '/tasks',
