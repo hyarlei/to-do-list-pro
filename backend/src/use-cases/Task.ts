@@ -5,7 +5,6 @@ interface CreateTaskUseCaseRequest {
     title: string;
     description?: string;
     completed?: boolean;
-    createdAt?: Date;
     categoryId: number;
 }
 
@@ -20,16 +19,14 @@ export class CreateTaskUseCase {
         title,
         description,
         completed = false,
-        createdAt = new Date(),
         categoryId,
     }: CreateTaskUseCaseRequest): Promise<CreateTaskUseCaseResponse> {
         const task = await this.taskRepository.create({
             title,
             description: description || undefined,
             completed,
-            createdAt,
             category: { connect: { id: categoryId } },
-        } as Prisma.TaskCreateInput);
+        });
 
         return {
             task,
