@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import prisma from '../../lib/prisma';
+import { prisma } from '../../lib/prisma';
 import { CreateTaskUseCase } from '../../use-cases/Task';
 
 class TaskController {
@@ -15,8 +15,12 @@ class TaskController {
     try {
       const response = await this.createTaskUseCase.execute(req.body);
       return res.status(201).json(response.task);
-    } catch (error) {
-      return res.status(400).json({ error: 'Erro ao criar tarefa' });
+    } catch (error: any) {
+      console.error('Erro ao criar tarefa:', error);
+      return res.status(400).json({ 
+        error: 'Erro ao criar tarefa',
+        details: error.message || error
+      });
     }
   }
 
