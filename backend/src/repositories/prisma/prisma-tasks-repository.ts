@@ -1,5 +1,5 @@
+import { prisma } from '@/lib/prisma'
 import { Prisma } from '@prisma/client'
-import prisma from '../../lib/prisma'
 import { TasksRepository } from '../tasks-repository'
 
 export class PrismaTasksRepository implements TasksRepository {
