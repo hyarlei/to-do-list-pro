@@ -1,4 +1,3 @@
-import { Prisma } from '@prisma/client';
 import { TasksRepository } from '../repositories/tasks-repository';
 
 interface CreateTaskUseCaseRequest {
