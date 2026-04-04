@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { randomUUID } from 'node:crypto';
-import { TasksRepository } from '../tasks-repository';
+import { TasksRepository, FindAllOptions } from '../tasks-repository';
 
 export class InMemoryTasksRepository implements TasksRepository {
     public items: any[] = [];
@@ -18,8 +18,13 @@ export class InMemoryTasksRepository implements TasksRepository {
         return task;
     }
 
-    async findAll(): Promise<any[]> {
+    async findAll(options?: FindAllOptions): Promise<any[]> {
         return this.items;
+    }
+
+    async findById(id: number): Promise<any | null> {
+        const task = this.items.find((task) => task.id === id);
+        return task || null;
     }
 
     async update(id: string, data: Prisma.TaskUpdateInput): Promise<any> {
