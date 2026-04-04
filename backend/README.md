@@ -1,4 +1,4 @@
-# 🚀 To-Do List Pro - Backend API
+# To-Do List Pro - Backend API
 
 Esta é uma API RESTful para gerenciamento de tarefas, desenvolvida como parte do processo de onboarding na JIT Technology. O projeto foca em organização de camadas, tipagem forte com TypeScript e persistência de dados.
 
