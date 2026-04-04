@@ -64,20 +64,20 @@ A API estará disponível em `http://localhost:3000` (ou a porta que você confi
 
 ### Categorias
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| POST   | /categories      | Cadastra uma nova categoria |
-| GET    | /categories      | Lista todas as categorias com contagem de tarefas |
+|Método|Rota|Descrição|
+|------|------|-----------|
+|POST|/categories|Cadastra uma nova categoria|
+|GET|/categories|Lista todas as categorias com contagem de tarefas|
 
 ### Tarefas
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| POST | /tasks | Cria uma nova tarefa vinculada a uma categoria |
-| GET | /tasks | Lista todas as tarefas (com filtro opcional por status) |
-| GET | /tasks/:id | Busca uma tarefa específica |
-| PATCH | /tasks/:id | Atualiza uma tarefa |
-| DELETE | /tasks/:id | Deleta uma tarefa |
+|Método|Rota|Descrição|
+|------|------|-----------|
+|POST|/tasks|Cria uma nova tarefa vinculada a uma categoria|
+|GET|/tasks|Lista todas as tarefas (com filtro opcional por status)|
+|GET|/tasks/:id|Busca uma tarefa específica|
+|PATCH|/tasks/:id|Atualiza uma tarefa|
+|DELETE|/tasks/:id|Deleta uma tarefa|
 
 ### Query Parameters
 
@@ -115,9 +115,9 @@ JWT_SECRET=sua-chave-secreta-super-segura
 ## Scripts Disponíveis
 
 ```bash
-npm run dev        # Inicia servidor em modo desenvolvimento
-npm run build      # Compila TypeScript
-npm run test       # Executa testes (não configurado)
+npm run dev
+npm run build
+npm run test
 ```
 
 ## Exemplo de Requisição
@@ -164,5 +164,6 @@ A API retorna respostas padronizadas com status HTTP apropriados:
 ## Autor
 
 Hyarlei Silva
+
 - LinkedIn: [https://www.linkedin.com/in/hyarlei-silva]
 - GitHub: [https://github.com/hyarlei]
