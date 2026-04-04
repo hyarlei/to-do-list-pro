@@ -8,14 +8,14 @@ O frontend do To-Do List Pro fornece uma experiência de usuário intuitiva e r�
 
 ## Funcionalidades
 
-- Interface responsiva e moderna
-- Hot Module Replacement (HMR) em desenvolvimento
-- Integração com API Backend
-- Design mobile-first
-- Filtro e busca de tarefas
-- Organização por categorias
-- Marcação de tarefas concluídas
-- Componentes reutilizáveis
+- ✅ Interface responsiva e moderna
+- ✅ Hot Module Replacement (HMR) em desenvolvimento
+- ✅ Integração com API Backend
+- ✅ Design mobile-first
+- ✅ Filtro e busca de tarefas
+- ✅ Organização por categorias
+- ✅ Marcação de tarefas concluídas
+- ✅ Componentes reutilizáveis
 
 ## Stack Tecnológico
 
