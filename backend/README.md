@@ -14,14 +14,14 @@ Esta é uma API RESTful para gerenciamento de tarefas, desenvolvida como parte d
 
 ## Funcionalidades
 
-- [x] Cadastro de Categorias (Trabalho, Estudo, Pessoal, etc.)
-- [x] Listagem de Categorias
-- [x] CRUD completo de Tarefas (Create, Read, Update, Delete)
-- [x] Filtro de tarefas por status (Pendente/Concluído)
-- [x] Relacionamento entre Tarefa e Categoria
-- [x] Validação com Zod
-- [x] Tratamento centralizado de erros
-- [x] CORS habilitado
+- ✅ Cadastro de Categorias (Trabalho, Estudo, Pessoal, etc.)
+- ✅ Listagem de Categorias
+- ✅ CRUD completo de Tarefas (Create, Read, Update, Delete)
+- ✅ Filtro de tarefas por status (Pendente/Concluído)
+- ✅ Relacionamento entre Tarefa e Categoria
+- ✅ Validação com Zod
+- ✅ Tratamento centralizado de erros
+- ✅ CORS habilitado
 
 ## Como rodar o projeto
 
